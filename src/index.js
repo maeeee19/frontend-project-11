@@ -1,20 +1,28 @@
 import './styles.scss';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
-import { urlSchema } from './watchers'
+import { urlSchema, watchUrl } from './watchers'
 
 const form = document.querySelector('form');
 
+const valueObject = {
+    value: null,
+    isError: false
+}
+
+const watchedValueObject = watchUrl(valueObject)
+
 form.addEventListener("submit", (event) => {
-    const data = new FormData(form)
+    const data = new FormData(event.target)
+
     event.preventDefault()
-    console.log(data)
-    urlSchema.validate(event.target.value)
+
+    urlSchema.validate(data.get('url'))
         .then((val) => {
-            console.log(val)
+            watchedValueObject.isError = false
+            watchedValueObject.value = val
         })
         .catch((e) => {
-            console.log('net')
-            console.log(e)
+            watchedValueObject.isError = true
         })
 })
