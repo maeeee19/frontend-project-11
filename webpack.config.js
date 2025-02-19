@@ -37,4 +37,7 @@ export default {
   output: {
     clean: true,
   },
+  ignoreWarnings: [
+    (warning) => true
+  ]
 };
