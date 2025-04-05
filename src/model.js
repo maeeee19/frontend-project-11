@@ -1,9 +1,11 @@
-import { watchState } from "./view"
+import watchState from './view.js';
 
 const state = {
-    urls: [],
-    feeds: [],
-    inputError: null
-}
+  urls: [],
+  feeds: [],
+  inputError: null,
+};
 
-export const watchedState = watchState(state)
+const watchedState = watchState(state);
+
+export default watchedState;
