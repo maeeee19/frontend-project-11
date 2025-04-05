@@ -28,11 +28,6 @@ i18next.init({
 
 const requestOrigins = (soursePath) => axios.get(`${ORIGINS_URL}?url=${soursePath}`)
   .then(({ data }) => {
-    if (soursePath === 'https://ru.hexlet.io/lessons.rss') {
-      watchedState.inputSuccess = 'RSS успешно загружен';
-      return Promise.resolve();
-    }
-
     if (data.status !== 200) {
       throw new Error('Ресурс не содержит валидный RSS');
     }
