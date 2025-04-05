@@ -37,4 +37,9 @@ module.exports = {
   output: {
     clean: true,
   },
+  devServer: {
+    client: {
+      overlay: false,
+    },
+  },
 };
