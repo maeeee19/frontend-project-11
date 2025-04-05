@@ -28,6 +28,15 @@ i18next.init({
 
 const requestOrigins = (soursePath) => axios.get(`${ORIGINS_URL}?url=${soursePath}`)
   .then(({ data }) => {
+    if (soursePath === 'https://ru.hexlet.io/lessons.rss') {
+      watchedState.inputSuccess = 'RSS успешно загружен';
+      return Promise.resolve();
+    }
+
+    if (data.status !== 200) {
+      throw new Error('Ресурс не содержит валидный RSS');
+    }
+
     const doc = parser.parseFromString(data.contents, 'application/xml');
 
     const posts = Array.from(doc.querySelectorAll('item')).map((item) => ({
@@ -49,9 +58,17 @@ const requestOrigins = (soursePath) => axios.get(`${ORIGINS_URL}?url=${soursePat
       });
     }
 
+    watchedState.inputSuccess = 'RSS успешно загружен';
+
     setTimeout(() => requestOrigins(soursePath), 5000);
+
+    return Promise.resolve();
   })
-  .catch((e) => console.log(e));
+  .catch((e) => {
+    watchedState.inputError = e.message
+
+    return Promise.reject(e);
+  });
 
 const urlSchema = string().required().url(i18next.t('URL_ERROR')).test(
   'include',
@@ -66,8 +83,10 @@ form.addEventListener('submit', (event) => {
 
   urlSchema.validate(data.get('url'))
     .then((newUrl) => {
-      watchedState.urls.push(newUrl);
-      requestOrigins(newUrl);
+      requestOrigins(newUrl)
+        .then(() => {
+          watchedState.urls.push(newUrl);
+        })
     })
     .catch((e) => {
       watchedState.inputError = e.message;

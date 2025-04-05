@@ -53,11 +53,27 @@ const pushPostDOM = (post) => {
 const watchState = (object) => onChange(object, (path, value, previousValue, applyData) => {
   if (path === 'inputError') {
     if (value === null) {
+      errorElement.classList.remove('text-danger');
       inputRef.classList.remove('is-invalid');
       errorElement.innerHTML = '';
       form.reset();
     } else {
+      errorElement.classList.remove('text-success');
+      errorElement.classList.add('text-danger');
       inputRef.classList.add('is-invalid');
+      errorElement.innerHTML = value;
+    }
+  }
+
+  if (path === 'inputSuccess') {
+    if (value === null) {
+      errorElement.classList.remove('text-success');
+      errorElement.innerHTML = '';
+      form.reset();
+    } else {
+      errorElement.classList.remove('text-danger');
+      inputRef.classList.remove('is-invalid');
+      errorElement.classList.add('text-success');
       errorElement.innerHTML = value;
     }
   }
