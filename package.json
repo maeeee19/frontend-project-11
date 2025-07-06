@@ -4,11 +4,13 @@
   "description": "[![Actions Status](https://github.com/maeeee19/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/maeeee19/frontend-project-11/actions)",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test-coverage": "jest --coverage",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "develop": "make develop",
+    "install-deps": "make install",
+    "build": "make build",
+    "test-make": "make test",
+    "lint-make": "make lint"
   },
   "repository": {
     "type": "git",
