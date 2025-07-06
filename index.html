@@ -17,7 +17,7 @@
         <div class="modal-body text-break">
         </div>
         <div class="modal-footer">
-            <a class="btn btn-primary full-article" href="${post.link}" role="button" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-primary full-article" href="#" role="button" target="_blank" rel="noopener noreferrer">
                 Читать полностью
             </a>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -31,7 +31,7 @@
           <div class="col-md-10 col-lg-8 mx-auto text-white">
             <h1 class="display-3 mb-0">RSS агрегатор</h1>
             <p class="lead">Начните читать RSS сегодня! Это легко, это красиво.</p>
-            <form class="rss-form text-body">
+            <form class="rss-form text-body position-relative">
               <div class="row">
                 <div class="col">
                   <div class="form-floating">
@@ -40,7 +40,7 @@
                   </div>
                 </div>
                 <div class="col-auto">
-                  <button type="submit" aria-label="add" class="h-100 btn btn-lg btn-primary px-sm-5">Добавить</button>
+                  <button type="submit" class="h-100 btn btn-lg btn-primary px-sm-5" style="z-index: 1">Добавить</button>
                 </div>
               </div>
             </form>
@@ -51,8 +51,22 @@
       </section>
       <section class="container-fluid container-xxl p-5">
         <div class="row">
-          <div class="col-md-10 col-lg-8 order-1 mx-auto posts"></div>
-          <div class="col-md-10 col-lg-4 mx-auto order-0 order-lg-1 feeds"></div>
+          <div class="col-md-10 col-lg-8 order-1 mx-auto posts" style="display: none;">
+            <div class="card border-0">
+              <div class="card-body">
+                <h2 class="card-title h4">Посты</h2>
+              </div>
+              <ul class="list-group border-0 rounded-0"></ul>
+            </div>
+          </div>
+          <div class="col-md-10 col-lg-4 mx-auto order-0 order-lg-1 feeds" style="display: none;">
+            <div class="card border-0">
+              <div class="card-body">
+                <h2 class="card-title h4">Фиды</h2>
+              </div>
+              <ul class="list-group border-0 rounded-0"></ul>
+            </div>
+          </div>
         </div>
       </section>
     </main>
