@@ -23,7 +23,7 @@ export default [
       ...stylistic.configs.recommended.rules,
       '@stylistic/semi': ['error', 'never'],
       '@stylistic/brace-style': ['error', '1tbs'],
-      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      '@stylistic/arrow-parens': ['error', 'always'],
     },
   },
 ]
