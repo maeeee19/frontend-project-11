@@ -64,6 +64,12 @@ export const showPosts = (posts) => {
         rel: 'noopener noreferrer',
       });
 
+      a.addEventListener('click', () => {
+        a.classList.remove('fw-bold');
+        a.classList.add('fw-normal');
+        a.classList.add('link-secondary');
+      });
+
       const button = createElement('button', 'btn btn-outline-primary btn-sm', 'Просмотр', {
         type: 'button',
         'data-id': post.id,
