@@ -34,8 +34,6 @@ const updateFeedPeriodically = async (feed, watchedState) => {
         posts: [...newPosts, ...watchedState.posts],
       });
     }
-  } catch (error) {
-    console.error(`Ошибка при обновлении RSS потока ${feed.title}:`, error);
   } finally {
     setTimeout(() => updateFeedPeriodically(feed, watchedState), 5000);
   }
@@ -89,10 +87,17 @@ const addFeed = async (url, watchedState) => {
 
     setTimeout(() => updateFeedPeriodically(feed, watchedState), 5000);
   } catch (error) {
-    Object.assign(watchedState, {
-      error: error.message,
-      success: null,
-    });
+    if (error.code === 'ERR_NETWORK') {
+      Object.assign(watchedState, {
+        error: i18next.t('NETWORK_ERROR'),
+        success: null,
+      });
+    } else {
+      Object.assign(watchedState, {
+        error: error.message,
+        success: null,
+      });
+    }
   }
 };
 

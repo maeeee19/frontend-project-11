@@ -9,6 +9,7 @@ const initI18n = () => {
         translation: {
           URL_ERROR: 'Ссылка должна быть валидным URL',
           URL_EXIST: 'RSS уже существует',
+          NETWORK_ERROR: 'Ошибка сети',
         },
       },
     },
