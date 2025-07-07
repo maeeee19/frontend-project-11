@@ -41,7 +41,8 @@ export const showFeeds = (feeds) => {
       li.appendChild(p)
       feedsList.appendChild(li)
     })
-  } else {
+  }
+  else {
     elements.feedsContainer.style.display = 'none'
     feedsList.innerHTML = ''
   }
@@ -75,7 +76,8 @@ export const showPosts = (posts) => {
       li.appendChild(button)
       postsList.appendChild(li)
     })
-  } else {
+  }
+  else {
     elements.postsContainer.style.display = 'none'
     postsList.innerHTML = ''
   }

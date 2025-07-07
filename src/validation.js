@@ -6,7 +6,8 @@ const validateUrl = (url) => {
   try {
     schema.validateSync(url)
     return { isValid: true, error: null }
-  } catch (error) {
+  }
+  catch (error) {
     return { isValid: false, error: error.message }
   }
 }

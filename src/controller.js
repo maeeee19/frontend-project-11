@@ -29,7 +29,8 @@ const init = () => {
     if (path === 'error') {
       if (value) {
         showError(value)
-      } else {
+      }
+      else {
         clearFeedback()
       }
     }
