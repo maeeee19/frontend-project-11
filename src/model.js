@@ -16,11 +16,11 @@ const updateFeedPeriodically = async (feed, watchedState) => {
     const response = await fetchFeed(feed.url)
     const data = parseRSS(response.data.contents)
 
-    const existingPosts = watchedState.posts.filter((post) => post.feedId === feed.id)
-    const existingLinks = new Set(existingPosts.map((post) => post.link))
+    const existingPosts = watchedState.posts.filter(post => post.feedId === feed.id)
+    const existingLinks = new Set(existingPosts.map(post => post.link))
 
     const newPosts = data.items
-      .filter((item) => !existingLinks.has(item.link))
+      .filter(item => !existingLinks.has(item.link))
       .map((item, index) => ({
         id: `${feed.id}-${existingPosts.length + index}`,
         feedId: feed.id,
@@ -103,7 +103,7 @@ const addFeed = async (url, watchedState) => {
   }
 }
 
-const getPostById = (id, watchedState) => watchedState.posts.find((post) => post.id === id)
+const getPostById = (id, watchedState) => watchedState.posts.find(post => post.id === id)
 
 const getState = () => state
 

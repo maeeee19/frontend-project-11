@@ -1,4 +1,3 @@
-import js from '@eslint/js'
 import globals from 'globals'
 import stylistic from '@stylistic/eslint-plugin'
 
@@ -10,6 +9,7 @@ export default [
     languageOptions: {
       globals: {
         ...globals.browser,
+        ...globals.node,
       },
       parserOptions: {
         ecmaVersion: 'latest',
@@ -22,8 +22,8 @@ export default [
     rules: {
       ...stylistic.configs.recommended.rules,
       '@stylistic/semi': ['error', 'never'],
-      '@stylistic/brace-style': 'error',
-      '@stylistic/arrow-parens': 'error',
+      '@stylistic/brace-style': ['error', '1tbs'],
+      '@stylistic/arrow-parens': ['error', 'as-needed'],
     },
   },
 ]

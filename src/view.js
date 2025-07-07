@@ -24,7 +24,7 @@ const createElement = (tag, className, textContent, attributes = {}) => {
   return element
 }
 
-export const showFeeds = (feeds) => {
+export const showFeeds = feeds => {
   const feedsList = elements.feedsContainer.querySelector('ul')
 
   if (feeds.length > 0) {
@@ -32,7 +32,7 @@ export const showFeeds = (feeds) => {
 
     feedsList.innerHTML = ''
 
-    feeds.forEach((feed) => {
+    feeds.forEach(feed => {
       const li = createElement('li', 'list-group-item border-0 border-end-0')
       const h3 = createElement('h3', 'h6 m-0', feed.title)
       const p = createElement('p', 'm-0 small text-black-50', feed.description)
@@ -47,14 +47,14 @@ export const showFeeds = (feeds) => {
   }
 }
 
-export const showPosts = (posts) => {
+export const showPosts = posts => {
   const postsList = elements.postsContainer.querySelector('ul')
   if (posts.length > 0) {
     elements.postsContainer.style.display = 'block'
 
     postsList.innerHTML = ''
 
-    posts.forEach((post) => {
+    posts.forEach(post => {
       const li = createElement('li', 'list-group-item d-flex justify-content-between align-items-start border-0 border-end-0')
 
       const a = createElement('a', post.isRead ? 'fw-normal link-secondary' : 'fw-bold', post.title, {
@@ -81,7 +81,7 @@ export const showPosts = (posts) => {
   }
 }
 
-export const showModal = (post) => {
+export const showModal = post => {
   elements.modalTitle.textContent = post.title
   elements.modalBody.textContent = post.description
   elements.fullArticleLink.href = post.link
@@ -89,14 +89,14 @@ export const showModal = (post) => {
   elements.modal.show()
 }
 
-export const showError = (message) => {
+export const showError = message => {
   elements.feedback.textContent = message
   elements.feedback.classList.add('text-danger')
   elements.feedback.classList.remove('text-success')
   elements.input.classList.add('is-invalid')
 }
 
-export const showSuccess = (message) => {
+export const showSuccess = message => {
   elements.feedback.textContent = message
   elements.feedback.classList.add('text-success')
   elements.feedback.classList.remove('text-danger')

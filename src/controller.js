@@ -42,14 +42,14 @@ const init = () => {
     }
   })
 
-  elements.form.addEventListener('submit', (e) => {
+  elements.form.addEventListener('submit', e => {
     e.preventDefault()
     const formData = new FormData(e.target)
     const url = formData.get('url')
     addFeed(url, watchedState)
   })
 
-  elements.postsContainer.addEventListener('click', (e) => {
+  elements.postsContainer.addEventListener('click', e => {
     const button = e.target.closest('button')
     const link = e.target.closest('a')
 
