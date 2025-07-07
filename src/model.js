@@ -16,11 +16,11 @@ const updateFeedPeriodically = async (feed, watchedState) => {
     const response = await fetchFeed(feed.url)
     const data = parseRSS(response.data.contents)
 
-    const existingPosts = watchedState.posts.filter((post) => post.feedId === feed.id)
-    const existingLinks = new Set(existingPosts.map((post) => post.link))
+    const existingPosts = watchedState.posts.filter(post => post.feedId === feed.id)
+    const existingLinks = new Set(existingPosts.map(post => post.link))
 
     const newPosts = data.items
-      .filter((item) => !existingLinks.has(item.link))
+      .filter(item => !existingLinks.has(item.link))
       .map((item, index) => ({
         id: `${feed.id}-${existingPosts.length + index}`,
         feedId: feed.id,
@@ -35,7 +35,8 @@ const updateFeedPeriodically = async (feed, watchedState) => {
         posts: [...newPosts, ...watchedState.posts],
       })
     }
-  } finally {
+  }
+  finally {
     setTimeout(() => updateFeedPeriodically(feed, watchedState), 5000)
   }
 }
@@ -88,13 +89,15 @@ const addFeed = async (url, watchedState) => {
     })
 
     setTimeout(() => updateFeedPeriodically(feed, watchedState), 5000)
-  } catch (error) {
+  }
+  catch (error) {
     if (error.code === 'ERR_NETWORK') {
       Object.assign(watchedState, {
         error: i18next.t('NETWORK_ERROR'),
         success: null,
       })
-    } else {
+    }
+    else {
       Object.assign(watchedState, {
         error: error.message,
         success: null,
@@ -103,7 +106,7 @@ const addFeed = async (url, watchedState) => {
   }
 }
 
-const getPostById = (id, watchedState) => watchedState.posts.find((post) => post.id === id)
+const getPostById = (id, watchedState) => watchedState.posts.find(post => post.id === id)
 
 const getState = () => state
 
