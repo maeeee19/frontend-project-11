@@ -75,6 +75,9 @@ export const showPosts = (posts) => {
       li.appendChild(button);
       postsList.appendChild(li);
     });
+  } else {
+    elements.postsContainer.style.display = 'none';
+    postsList.innerHTML = '';
   }
 };
 

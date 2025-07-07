@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/maeeee19/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/maeeee19/frontend-project-11/actions)",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -30,6 +31,7 @@
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-env": "^7.20.2",
     "@eslint/js": "^9.9.1",
+    "@stylistic/eslint-plugin": "^5.1.0",
     "ajv": "^8.17.1",
     "babel-jest": "^29.3.1",
     "babel-loader": "^9.1.2",
