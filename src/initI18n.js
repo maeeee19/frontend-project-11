@@ -1,4 +1,4 @@
-import i18next from 'i18next';
+import i18next from 'i18next'
 
 const initI18n = () => {
   i18next.init({
@@ -13,7 +13,7 @@ const initI18n = () => {
         },
       },
     },
-  });
-};
+  })
+}
 
-export default initI18n;
+export default initI18n
