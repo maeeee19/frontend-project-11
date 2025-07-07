@@ -18,8 +18,6 @@ const init = () => {
   const state = getState();
 
   const watchedState = onChange(state, (path, value) => {
-    console.log('State changed:', path, value);
-
     if (path === 'feeds') {
       showFeeds(watchedState.feeds);
     }
@@ -48,7 +46,6 @@ const init = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const url = formData.get('url');
-    console.log('Adding feed:', url);
     addFeed(url, watchedState);
   });
 

@@ -29,14 +29,10 @@ const updateFeedPeriodically = async (feed, watchedState) => {
         link: new URL(item.link).toString(),
       }));
 
-    console.log(newPosts, 'newPosts');
-
     if (newPosts.length > 0) {
       Object.assign(watchedState, {
         posts: [...newPosts, ...watchedState.posts],
       });
-
-      console.log(`Добавлено ${newPosts.length} новых постов в RSS поток: ${feed.title}`);
     }
   } catch (error) {
     console.error(`Ошибка при обновлении RSS потока ${feed.title}:`, error);
@@ -94,7 +90,7 @@ const addFeed = async (url, watchedState) => {
     setTimeout(() => updateFeedPeriodically(feed, watchedState), 5000);
   } catch (error) {
     Object.assign(watchedState, {
-      error: 'Ошибка при загрузке RSS',
+      error: error.message,
       success: null,
     });
   }

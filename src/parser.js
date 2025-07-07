@@ -5,7 +5,7 @@ const parseRSS = (xmlString) => {
   const parseError = doc.querySelector('parsererror');
 
   if (parseError) {
-    throw new Error('Ошибка парсинга RSS');
+    throw new Error('Ресурс не содержит валидный RSS');
   }
 
   const channel = doc.querySelector('channel');
