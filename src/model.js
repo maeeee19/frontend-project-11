@@ -20,13 +20,14 @@ const updateFeedPeriodically = async (feed, watchedState) => {
     const existingLinks = new Set(existingPosts.map((post) => post.link));
 
     const newPosts = data.items
-      .filter((item) => !existingLinks.has(new URL(item.link).toString()))
+      .filter((item) => !existingLinks.has(item.link))
       .map((item, index) => ({
         id: `${feed.id}-${existingPosts.length + index}`,
         feedId: feed.id,
         title: item.title,
         description: item.description,
-        link: new URL(item.link).toString(),
+        link: item.link,
+        isRead: false,
       }));
 
     if (newPosts.length > 0) {
@@ -75,6 +76,7 @@ const addFeed = async (url, watchedState) => {
       title: item.title,
       description: item.description,
       link: new URL(item.link).toString(),
+      isRead: false,
     }));
 
     Object.assign(watchedState, {

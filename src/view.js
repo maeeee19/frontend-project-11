@@ -57,17 +57,11 @@ export const showPosts = (posts) => {
     posts.forEach((post) => {
       const li = createElement('li', 'list-group-item d-flex justify-content-between align-items-start border-0 border-end-0');
 
-      const a = createElement('a', 'fw-bold', post.title, {
+      const a = createElement('a', post.isRead ? 'fw-normal link-secondary' : 'fw-bold', post.title, {
         href: post.link,
         'data-id': post.id,
         target: '_blank',
         rel: 'noopener noreferrer',
-      });
-
-      a.addEventListener('click', () => {
-        a.classList.remove('fw-bold');
-        a.classList.add('fw-normal');
-        a.classList.add('link-secondary');
       });
 
       const button = createElement('button', 'btn btn-outline-primary btn-sm', 'Просмотр', {
@@ -81,9 +75,6 @@ export const showPosts = (posts) => {
       li.appendChild(button);
       postsList.appendChild(li);
     });
-  } else {
-    elements.postsContainer.style.display = 'none';
-    postsList.innerHTML = '';
   }
 };
 
@@ -91,6 +82,7 @@ export const showModal = (post) => {
   elements.modalTitle.textContent = post.title;
   elements.modalBody.textContent = post.description;
   elements.fullArticleLink.href = post.link;
+
   elements.modal.show();
 };
 

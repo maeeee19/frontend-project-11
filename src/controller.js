@@ -51,10 +51,26 @@ const init = () => {
 
   elements.postsContainer.addEventListener('click', (e) => {
     const button = e.target.closest('button');
+    const link = e.target.closest('a');
+
+    if (link) {
+      link.classList.remove('fw-bold');
+      link.classList.add('fw-normal', 'link-secondary');
+
+      const postId = link.dataset.id;
+      const post = getPostById(postId, watchedState);
+
+      post.isRead = true;
+    }
 
     if (button) {
       const postId = button.dataset.id;
       const post = getPostById(postId, watchedState);
+
+      const postLink = button.previousElementSibling;
+      postLink.classList.remove('fw-bold');
+      postLink.classList.add('fw-normal', 'link-secondary');
+      post.isRead = true;
 
       showModal(post);
     }
