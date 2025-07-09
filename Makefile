@@ -1,16 +1,16 @@
 develop:
-	npx webpack serve
+	npm run develop
 
 install:
-	npm ci
+	npm run install-deps
 
 build:
-	NODE_ENV=production npx webpack
+	npm run build
 
 test:
-	npm test
+	npm run test
 
 lint:
-	npx eslint .
+	npm run lint
 
 .PHONY: test

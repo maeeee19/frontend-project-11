@@ -6,11 +6,10 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "develop": "make develop",
-    "install-deps": "make install",
-    "build": "make build",
-    "test-make": "make test",
-    "lint-make": "make lint"
+    "develop": "npx webpack serve",
+    "install-deps": "npm ci",
+    "build": "NODE_ENV=production npx webpack",
+    "test": "npm test"
   },
   "repository": {
     "type": "git",
